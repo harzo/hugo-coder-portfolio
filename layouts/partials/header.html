@@ -1,5 +1,8 @@
 <nav class="navigation">
   <section class="container">
+    {{ if .Site.Params.homeLinkLogo }}
+      <img src="{{ .Site.Params.homeLinkLogo | absURL }}" {{ if .Site.Params.homeLinkLogoStyle }}style="{{ .Site.Params.homeLinkLogoStyle }}" {{ end }}alt="homelinklogo">
+    {{ end }}
     <a class="navigation-title" href="{{ print "/" | relLangURL }}">{{ .Site.Title }}</a>
     <input type="checkbox" id="menu-control"/>
     <label class="menu-mobile {{ if $.Site.Params.rtl }} float-left {{ else }} float-right {{ end }}" for="menu-control">
