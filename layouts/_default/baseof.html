@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{ "css/normalize.min.css" | absURL}}">
     <link rel="stylesheet" href="{{ "css/style.min.css" | absURL }}">
 
-    {{ if .Site.Params.rtl}}
+    {{ if .Site.Params.rtl }}
       <link rel="stylesheet" href="{{ "css/style-rtl.min.css" | absURL }}">
     {{ end }}
 
@@ -38,8 +38,16 @@
       <link rel="stylesheet" href="{{ . | absURL }}">
     {{ end }}
 
+    {{ if .Site.Params.favicon32url }}
+    <link rel="icon" type="image/png" href="{{ .Site.Params.favicon32url }}" sizes="32x32">
+    {{ else }}
     <link rel="icon" type="image/png" href="{{ "/images/favicon-32x32.png" | absURL }}" sizes="32x32">
+    {{ end }}
+    {{ if .Site.Params.favicon16url }}
+    <link rel="icon" type="image/png" href="{{ .Site.Params.favicon16url }}" sizes="16x16">
+    {{ else }}
     <link rel="icon" type="image/png" href="{{ "/images/favicon-16x16.png" | absURL }}" sizes="16x16">
+    {{ end }}
 
     {{ with .Site.Home.AlternativeOutputFormats.Get "RSS" }}
       <link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="{{ $.Site.Title | plainify }}">
