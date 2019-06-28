@@ -7,7 +7,7 @@
 
     {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
     <meta name="description" content="{{ if .IsPage }}{{ .Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta name="keywords" content="{{ if .IsPage }}{{ delimit .Params.keywords ", " }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
+    <meta name="keywords" content="{{ if .IsPage }}{{ if .Params.keywords }}{{ delimit .Params.keywords ", " }}{{ end }}{{ else }}{{ .Site.Params.keywords }}{{ end }}">
 
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:title" content="{{ block "og-title" . }}{{ .Site.Title }}{{ end }}">
@@ -58,7 +58,7 @@
     {{ hugo.Generator }}
   </head>
 
-  <body class="{{ if .Site.Params.rtl }}rtl{{ end }}">
+  <body class="{{ if .Params.class }}{{ .Params.class }}{{ end }}{{ if .Site.Params.rtl }} rtl{{ end }}">
     <main class="wrapper">
       {{ partial "header.html" . }}
 
